@@ -22,7 +22,7 @@ jobs:
         run: npm install > app.log 2>&1
 
       - name: Build application
-        run: npx tsc -b > app.log 2>&1
+        run: touch app.log && npx tsc -b > app.log 2>&1
     
       - name: Archive test results
         uses: actions/upload-artifact@v2
