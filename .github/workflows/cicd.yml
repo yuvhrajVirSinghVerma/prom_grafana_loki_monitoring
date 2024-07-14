@@ -19,10 +19,10 @@ jobs:
           node-version: '14'
 
       - name: Install dependencies
-        run: npm install
+        run: npm install > app.log 2>&1
 
       - name: Build application
-        run: npm run build > app.log 2>&1
+        run: npx tsc -b > app.log 2>&1
     
       - name: Archive test results
         uses: actions/upload-artifact@v2
