@@ -20,19 +20,19 @@ jobs:
 
       - name: Append logs to file
         run: |
-          echo "=== Additional Logs ===" >> app_logs.txt
-          echo "Timestamp: $(date)" >> app_logs.txt
-          echo "Build completed successfully." >> app_logs.txt
-          
+          echo "=== Additional Logs ===" >> applogs.txt
+          echo "Timestamp: $(date)" >> applogs.txt
+          echo "Build completed successfully." >> applogs.txt
+
       - name: Install dependencies
-        run: npm install > app.log 2>&1
+        run: npm install > applogs.txt 2>&1
 
       - name: Build application
-        run:  npx tsc -b > app.log 2>&1
+        run:  npx tsc -b > applogs.txt 2>&1
     
       - name: Archive test results
         uses: actions/upload-artifact@v2
         with:
           name: applogs
-          path: app.log
+          path: applogs.txt
 
