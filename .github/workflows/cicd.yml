@@ -21,8 +21,7 @@ jobs:
       - name: Append logs to file
         run: |
           echo "=== Additional Logs ===" >> applogs.txt
-          echo "Timestamp: $(date)" >> applogs.txt
-          echo "Build completed successfully." >> applogs.txt
+          echo "hello"
 
       - name: Install dependencies
         run: npm install > applogs.txt 2>&1
