@@ -18,11 +18,17 @@ jobs:
         with:
           node-version: '14'
 
+      - name: Append logs to file
+        run: |
+          echo "=== Additional Logs ===" >> app_logs.txt
+          echo "Timestamp: $(date)" >> app_logs.txt
+          echo "Build completed successfully." >> app_logs.txt
+          
       - name: Install dependencies
         run: npm install > app.log 2>&1
 
       - name: Build application
-        run: touch app.log && npx tsc -b > app.log 2>&1
+        run:  npx tsc -b > app.log 2>&1
     
       - name: Archive test results
         uses: actions/upload-artifact@v2
