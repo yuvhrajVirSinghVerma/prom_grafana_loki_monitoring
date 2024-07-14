@@ -1,0 +1,32 @@
+name: Deploy and Test Application
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy_and_test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build application
+        run: npm run build > app.log 2>&1
+    
+      - name: Archive test results
+        uses: actions/upload-artifact@v2
+        with:
+          name: applogs
+          path: app.log
+
